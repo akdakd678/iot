@@ -1,13 +1,13 @@
-int swCount = 0;   //스위치 동작 횟수 저장용 변수
+int swCount = 3;   //스위치 동작 횟수 저장용 변수
 
-int ledRed = 8;    // 
-int ledGreen = 9;
-int ledBlue = 10;
+int ledRed = 7;     
+int ledGreen = 8;
+//  int ledBlue = 10; //blue핀 미사용
 
 void setup() {
   pinMode(ledRed, OUTPUT);
   pinMode(ledGreen, OUTPUT);
-  pinMode(ledBlue, OUTPUT);
+//  pinMode(ledBlue, OUTPUT);
 
   Serial.begin(9600); //통신속도 9600으로 하드웨어 시리얼 초기화
   
@@ -26,14 +26,14 @@ void serialEvent() {
         toggleLED(ledRed);
     else if (inChar == 'G')
         toggleLED(ledGreen);
-    else if (inChar == 'B')
-        toggleLED(ledBlue);
+//    else if (inChar == 'B')
+//        toggleLED(ledBlue);
     else if (inChar == ' ')
-        delay(300);
+        delay(200);
   }
 }
 void toggleLED(int ledPin) {
-  if (digitalRead(ledPin) == HIGH)
+  if (digitalRead(ledPin) == LOW)
     digitalWrite(ledPin, LOW);
   else
     digitalWrite(ledPin, HIGH);
